@@ -7,24 +7,24 @@ spec:
   - port: 8080
     targetPort: 8080
   selector:
-    app: k8s-gateway-api-demo-472a627
+    app: k8s-gateway-api-demo-184aebf
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: k8s-gateway-api-demo-472a627
-  name: k8s-gateway-api-demo-472a627
+    app: k8s-gateway-api-demo-184aebf
+  name: k8s-gateway-api-demo-184aebf
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: k8s-gateway-api-demo-472a627
+      app: k8s-gateway-api-demo-184aebf
   template:
     metadata:
       labels:
-        app: k8s-gateway-api-demo-472a627
+        app: k8s-gateway-api-demo-184aebf
     spec:
       containers:
       - env:
@@ -36,20 +36,20 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        image: msathetech/k8s-gateway-demo:472a627
+        image: msathetech/k8s-gateway-demo:184aebf
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 2
           timeoutSeconds: 10
         name: k8s-gateway-api-demo
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 2
           timeoutSeconds: 10
         resources:
           limits:
