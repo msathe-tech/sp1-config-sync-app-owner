@@ -7,24 +7,24 @@ spec:
   - port: 8080
     targetPort: 8080
   selector:
-    app: k8s-gateway-api-demo-42e23d1
+    app: k8s-gateway-api-demo-1e23e87
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: k8s-gateway-api-demo-42e23d1
-  name: k8s-gateway-api-demo-42e23d1
+    app: k8s-gateway-api-demo-1e23e87
+  name: k8s-gateway-api-demo-1e23e87
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: k8s-gateway-api-demo-42e23d1
+      app: k8s-gateway-api-demo-1e23e87
   template:
     metadata:
       labels:
-        app: k8s-gateway-api-demo-42e23d1
+        app: k8s-gateway-api-demo-1e23e87
     spec:
       containers:
       - env:
@@ -52,7 +52,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: spec.serviceAccountName
-        image: msathetech/k8s-gateway-demo:42e23d1
+        image: msathetech/k8s-gateway-demo:1e23e87
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
